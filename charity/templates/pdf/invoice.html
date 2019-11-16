@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+{% load template_extra %}
+{% load static %}
+{% get_media_prefix as MEDIA_URL %}
+<html>
+    <head>
+        <title>C C L- card</title>
+         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <style type="text/css">
+
+            .details {
+                padding: 8px 20px 0px 10px;
+                /*margin-left: 40%;*/
+                font-size: 14px;
+                line-height: 6;
+            }
+            p.mid{ padding-left: 65px; margin-bottom: 0;padding-top: 20px;}
+            .right{
+                float: right;
+            }
+
+            @page {
+                background: url({{ img }});
+                size: b6 portrait;
+
+                @frame content_frame {
+                    left: 50pt;
+                    width: 521pt;
+                    top: 60pt;
+                    height: 400pt;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class='first-info'>
+            <div class='wrapper'>
+
+                <div class='details'>
+                <h3>
+
+                    {% if config.MEMBERSHIP_ID %}
+                        {% if member.member_id %}
+                         <p class="mid">Membership Id: {{ member.member_id }} </p>
+                        {% else %}
+                            <br />
+                            <br />
+                        {% endif %}
+
+                    {% else %}
+                    <br />
+                    <br />
+                {% endif %}
+
+
+                        Name: {{ name.full_name }}<br />
+                        {% if config.PRINT_BLOOD_GROUP %}
+                            {% if personal.blood_group %}
+                           <span class="right"> Blood group: {{ personal.blood_group }}</span><br />
+                            {% endif %}
+                        {% endif %}
+                        Type: {{ type.user_type|user_type|title }}<br />
+                        Approved date: {{ type.updated_date|date:'d / M / Y' }}<br />
+                        {% if config.PRINT_EMERGENCY_PHONE %}
+                            Phone num: {{ name.phone_number }}
+                        {% endif %}
+
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

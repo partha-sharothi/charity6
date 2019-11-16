@@ -1,0 +1,344 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+            <div class="row mt-4">
+              <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-primary">
+                  <div class="card-body pb-0">
+                    <div class="btn-group float-right">
+                      <!-- <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+                        <!-- <i class="icon-settings"></i> -->
+                      <!-- </button> -->
+                    
+                        <!-- <div class="dropdown-menu dropdown-menu-right"> -->
+                          <!-- <a class="dropdown-item" href="#">All Members</a> -->
+                        <!-- </div> -->
+                  
+                    </div>                    
+                    <div>Single Leg Downline</div>
+                    <div class="text-value"></div>
+                  </div>
+                  <div class="chart-wrapper mt-3 mx-3" style="height:70px;"><h1>{{ single_leg }}</h1>
+                    <!-- <canvas class="chart" id="card-chart1" height="70"></canvas> -->
+                  </div>
+                </div>
+              </div>
+              <!-- /.col-->
+                <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-info">
+                  <div class="card-body pb-0">
+                    <div class="btn-group float-right">
+                      <!-- <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+                        <!-- <i class="icon-settings"></i> -->
+                      <!-- </button> -->
+                    
+                      <!-- <div class="dropdown-menu dropdown-menu-right"> -->
+                        
+                          <!-- <a class="dropdown-item" href="#">All Application</a> -->
+                      
+            
+                          <!-- <a class="dropdown-item" href="#">Add Application</a> -->
+                      
+                      <!-- </div>                   -->
+                    </div>                   
+                    <div>Current ammount</div>
+                    <div class="text-value"></div>
+                  </div>
+                  <div class="chart-wrapper mt-3" style="height:70px;"><h1>&nbsp;&nbsp;{{ account }}</h1>
+                    <canvas class="chart" id="card-chart2" height="70"></canvas>
+                  </div>
+                </div>
+              </div>
+              <!-- /.col-->
+              <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-warning"> 
+                  <div class="card-body pb-0">
+                    <div class="btn-group float-right">
+                      <!-- <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+                        <!-- <i class="icon-settings"></i> -->
+                      <!-- </button> -->
+                  
+                        <!-- <div class="dropdown-menu dropdown-menu-right"> -->
+                          
+                            <!-- <a class="dropdown-item" href="#">All Donations</a> -->
+                          
+                            <!-- <a class="dropdown-item" href="#">Add Donation</a> -->
+                          
+                        <!-- </div> -->
+                      
+                    </div>
+                    <div>Total Earnings</div>
+                    <div class="text-value"></div>
+                  </div>
+                  <div class="chart-wrapper mt-3" style="height:70px;"><h1>&nbsp;&nbsp;{{ total_income }} </h1>
+                    <canvas class="chart" id="card-chart3" height="70"></canvas>
+                  </div>
+                </div>
+              </div>
+              <!-- /.col-->
+              <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-danger">
+                  <div class="card-body pb-0">
+                    <div class="btn-group float-right">
+                      <!-- <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+                        <!-- <i class="icon-settings"></i> -->
+                      <!-- </button> -->
+                      
+                        <!-- <div class="dropdown-menu dropdown-menu-right"> -->
+                        
+                            <!-- <a class="dropdown-item" href="#">All Investments</a> -->
+                        
+                          
+                            <!-- <a class="dropdown-item" href="#">Add Investment</a> -->
+                        
+                        <!-- </div> -->
+                    
+                    </div>                   
+                    <div>Rewards Points</div>
+                    <div class="text-value"></div>
+                  </div>
+                  <div class="chart-wrapper mt-3 mx-3" style="height:70px;"><h1>{{ points }}</h1>
+                    <canvas class="chart" id="card-chart4" height="70"></canvas>
+                  </div>
+                </div>
+              </div>
+              <!-- /.col-->
+            </div>
+
+            <!-- /.row-->
+
+
+            <!-- Target -->
+<!-- The text field -->
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Referral URL</span>
+  </div>
+  <input type="text" class="form-control" {% if user.userprofileinfo.confirm and user.is_authenticated %} value="{{ referral_url }}" id="myInput" placeholder="{{ referral_url }}" {% endif %} >
+</div>
+
+<button onclick="myFunction()">Copy URL</button>
+
+{% if user.userprofileinfo.confirm and user.is_authenticated %}
+
+{% else %}
+
+      
+<header class="app-header navbar">
+  <h1><p align="center"><a href="{% url 'member:rendaring' %}">activate your account with btc & any user</a></p></h1>	
+
+</header>
+
+      {% if user.userprofileinfo.btc_activation %}
+
+            <header class="app-header navbar">
+              <h1><p align="center">activate your account with user</p></h1>	
+  
+            </header>
+      {% elif user.userprofileinfo.user_activation %}
+          <header class="app-header navbar">
+              <h1><p align="center"><a href="{% url 'member:rendaring' %}">activate your account with btc</a></p></h1>	
+    
+          </header>
+
+      {% endif %}
+
+
+
+
+{% endif %}
+
+
+                
+<h3 class="text-center text-black">Accounting Level Activity</h3>
+<br>
+
+<div class="container">
+<div class="bs-example">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>levels</th>
+                <th>GlobalDownline</th>
+                <th>Expected Direct <br> Member</th>
+                <th>Actual Direct <br> Member</th>
+				<th>income</th>
+				<th>Achive <br> Date</th>
+				<th>Release <br>date</th>
+				<th>Status</th>
+				
+            </tr>
+        </thead>
+        <tbody>
+
+          
+            <tr>
+                <td>1</td>
+                <td>2 </td>
+                <td>1</td>
+                <td>1</td>
+        <td>10.00</td>
+				<td>          {% for activity in user_activity %}
+                    {% if activity.level == 1 %}
+            {{ activity.start_date }}
+            {% endif %}
+            {% endfor %}</td>
+				<td>          {% for activity in user_activity %}
+            {% if activity.level == 1 %}
+        {{ activity.end_date }}
+        {% endif %}
+        {% endfor %}</td>
+				<td>           {% for activity in user_activity %}
+            {% if activity.level == 1 %}
+         {{ activity.level_status }}
+          {% endif %}
+          {% endfor %}</td>
+        
+            </tr>
+            
+            <tr>
+                <td>2</td>
+                <td>4</td>
+                <td>2</td>
+                <td>1</td>
+        <td>20.00</td>
+				<td>         {% for activity in user_activity %}
+            {% if activity.level == 2 %}
+    {{ activity.start_date }}
+    {% endif %}
+    {% endfor %}</td>
+				<td>         {% for activity in user_activity %}
+            {% if activity.level == 2 %}
+    {{ activity.end_date }}
+    {% endif %}
+    {% endfor %}</td>
+        <td>         {% for activity in user_activity %}
+            {% if activity.level == 2 %}
+    {{ activity.level_status }}
+    {% endif %}
+    {% endfor %}</td>
+        
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>6</td>
+                <td>3</td>
+                <td>1</td>
+        <td>40.00</td>
+        
+				<td>          {% for activity in user_activity %}
+            {% if activity.level == 3 %}
+    {{ activity.start_date }}
+    {% endif %}
+    {% endfor %}</td>
+				<td>          {% for activity in user_activity %}
+            {% if activity.level == 3 %}
+    {{ activity.end_date }}
+    {% endif %}
+    {% endfor %}</td>
+        <td>         {% for activity in user_activity %}
+            {% if activity.level == 3 %}
+    {{ activity.level_status }}
+    {% endif %}
+    {% endfor %}</td>
+        
+            </tr>   
+				<tr>
+                <td>4</td>
+                <td>10</td>
+                <td>4</td>
+                <td>1</td>
+        <td>80.00</td>
+        
+				<td>          {% for activity in user_activity %}
+            {% if activity.level == 4 %}
+    {{ activity.start_date }}
+    {% endif %}
+    {% endfor %}</td>
+				<td>         {% for activity in user_activity %}
+            {% if activity.level == 4 %}
+    {{ activity.end_date }}
+    {% endif %}
+    {% endfor %}</td>
+        <td>          {% for activity in user_activity %}
+            {% if activity.level == 4 %}
+    {{ activity.level_status }}
+    {% endif %}
+    {% endfor %}</td>
+        
+            </tr> 
+            <tr>
+                <td>5</td>
+                <td>15</td>
+                <td>5</td>
+                <td>1</td>
+        <td>150.00</td>
+        
+				<td>          {% for activity in user_activity %}
+            {% if activity.level == 5 %}
+    {{ activity.start_date }}
+    {% endif %}
+    {% endfor %}</td>
+				<td>          {% for activity in user_activity %}
+            {% if activity.level == 5 %}
+    {{ activity.end_date }}
+    {% endif %}
+    {% endfor %}</td>
+        <td>          {% for activity in user_activity %}
+            {% if activity.level == 5 %}
+    {{ activity.level_status }}
+    {% endif %}
+    {% endfor %}</td>
+        
+            </tr> 
+            <tr>
+                <td>6</td>
+                <td>24</td>
+                <td>6</td>
+                <td>1</td>
+        <td>200.00</td>
+        
+				<td> {% for activity in user_activity %}
+          {% if activity.level == 5 %}
+  {{ activity.start_date }}
+  {% endif %}
+  {% endfor %}</td>
+				<td>{% for activity in user_activity %}
+          {% if activity.level == 5 %}
+  {{ activity.end_date }}
+  {% endif %}
+  {% endfor %}</td>
+        <td>{% for activity in user_activity %}
+          {% if activity.level == 5 %}
+  {{ activity.level_status }}
+  {% endif %}
+  {% endfor %}</td>
+        
+            </tr> 
+        </tbody>
+    </table>
+</div>
+</div> 
+ 
+ 
+
+{% endblock %}
+
+
+{% block extra_script %}
+
+<script>
+  
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
+}
+</script>
+
+{% endblock %}
