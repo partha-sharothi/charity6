@@ -256,6 +256,9 @@ def point_bonous_reward(user,point):
 def home(request):
     return render(request,'index.html')
 
+def business(request):
+    return render(request,'busines.html')
+
 
 @login_required
 def home12(request):

@@ -1,20 +1,14 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<style>
-body {
-  background-image: url("img/background.png");
-  background-repeat: repeat-xy;
-}
-</style>
 
 
 </head>
@@ -343,16 +337,88 @@ body {
 </table>
 
 </div>
-<script>
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-</script>
+  
+<h1 class="text-center"> GLOBAL CHARITY </h1>
+<br/>
+<br/>
+<div class="container">
+<div class="card-deck">
+  <div class="card">
+	<img class="card-img-top" src="{% static 'img/img/99-01.jpg' %}"  alt="Card image cap">
+    <div class="card-body">
+      <h3 class="card-title text-center">SUPER SILVER</h3>
+      <h3 class="text-center">300 Points = 50$</h3>
+      
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="{% static 'img/img/10-01.jpg' %}" alt="Card image cap">
+    <div class="card-body">
+      <h3 class="card-title text-center">GLITTERING PEARL</h3>
+      <h3 class="text-center">1000 Points = 150$</h3>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="{% static 'img/img/ruby.jpg' %}" alt="Card image cap">
+    <div class="card-body">
+      <h3 class="card-title text-center">HOLY RUBY</h3>
+      <h3 class="text-center">3000 Points = 300$</h3>
+    </div>
+  </div>
+</div>
+<br>
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src="{% static 'img/img/extremegold.jpg' %}" alt="Card image cap">
+    <div class="card-body">
+      <h3 class="card-title text-center">EXTREME GOLD</h3>
+      <h3 class="text-center">7000 Points = 500$</h3>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="{% static 'img/img/platinum.jpg' %}" alt="Card image cap">
+    <div class="card-body">
+      <h3 class="card-title text-center">PREMIUM PLATINUM</h3>
+      <h3 class="text-center">15000 Points = I Phone</h3>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="{% static 'img/img/5555555555555-01.jpg' %}" alt="Card image cap">
+    <div class="card-body">
+      <h3 class="card-title text-center">REFLECTIVE RODHIUM</h3>
+      <h3 class="text-center">40000 Points = MacBook & Singapur Trip
+</h3>
+    </div>
+  </div>
+</div>
+<br>
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src="{% static 'img/img/diamond.jpg' %}" alt="Card image cap">
+    <div class="card-body">
+      <h3 class="card-title text-center">SHARP DIAMOND</h3>
+      <h3 class="text-center">80000 = Sadden car & France trip</h3>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="{% static 'img/img/11-01.jpg' %}" alt="Card image cap">
+    <div class="card-body">
+      <h3 class="card-title text-center">LUSTROUS PLATINUM</h3>
+      <h3 class="text-center">Having 10 sharp diamond holders =  Luxurious Apartment</h3>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="{% static 'img/img/crown.jpg' %}" alt="Card image cap">
+    <div class="card-body">
+      <h3 class="card-title text-center">CROWN AMBASSEDOR</h3>
+      <h3 class="text-center"> Having 10 lustrous Titanium holders = 10% Profit of Company</h3>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+
+
    
 </body>
 </html> 
